@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  qm-service:
+    image: canthefason/go-watcher:latest
+    container_name: 'qm-service'
+    ports:
+      - '8080:8080'
+    environment:
+      STAGE: 'docker-compose-land'
+    volumes:
+      - ~/go/src/github.com/moosecanswim/camp/qm-inv:/go/src/github.com/moosecanswim/camp/qm-inv
+    command: watcher -run github.com/moosecanswim/camp/qm-inv/cmd/server --config github.com/moosecanswim/camp/qm-inv/settings.toml --watch github.com/moosecanswim/camp/qm-inv
+
+  # es:
+  #   container_name: es
+  #   environment: 
+  #     discovery.type: "single-node"
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:6.6.2
+  #   ports:
+  #     - '9200:9200'
+  #     - '9300:9300'
+    # volumes:
+    #   - ./docker/elasticsearch:/opt/docker
+    # command: "/opt/docker/start.sh"
+

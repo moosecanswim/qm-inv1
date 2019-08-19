@@ -1,0 +1,14 @@
+syntax="proto3";
+
+package main;
+
+message SocialFollowers{
+    int32 youtube = 1;
+    int32 twitter = 3;
+}
+
+message Person {
+    string Name = 1;
+    int32 Age = 2;
+    SocialFollowers socialFollowers = 3;
+}
